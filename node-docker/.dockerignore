@@ -1,0 +1,3 @@
+# 要在构建上下文中使用文件，Dockerfile引用指令（例如COPY指令）中指定的文件。为了提高构建的性能，可以通过在上下文目录中添加.dockerignore文件来排除文件和目录。为了缩短上下文加载时间，请创建一个.dockerignore文件并node_modules在其中添加目录。
+
+node_modules
