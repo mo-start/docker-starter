@@ -70,3 +70,19 @@ docker run \
     }'
   ```
 
+
+
+# compose
+
+## docker-compose -f docker-compose.dev.yml up --build
+传递该--build标志，以便Docker编译我们的映像，然后启动它。
+
+
+# 调试
+- npm install nodemon
+- package.json: npm install nodemon
+- 浏览器中输入 chrome://inspect/#devices
+
+# 单元测试
+> 使用与上面相同的docker run命令，但是这次，我们将使用npm run test覆盖容器内部的CMD。这将调用package.json文件中“脚本”部分下的命令。见下文。
+docker-compose -f docker-compose.dev.yml run notes npm run test
