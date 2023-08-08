@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+ notes: # 用户自己自定义，它就是服务名称
+  build: # 使用 build 构建镜像
+   context: . # Dockerfile 所在的目录(设定上下文根目录)
+  ports:
+   - 8000:8000
+   - 9229:9229
+  environment: # 设置环境变量
+   - SERVER_PORT=8000
+   - CONNECTIONSTRING=mongodb://mongo:27017/notes
+  volumes: # 挂载目录
+   - ./:/app
+  command: npm run debug # 使用 command 可以覆盖容器启动后默认执行的命令。
+
+ # Docker Compose 会自动创建一个专门用于应用程序堆栈的网络（这就是我们没有在 compose 文件中定义网络的原因）
+ mongo: 
+  image: mongo:4.2.8
+  ports:
+   - 27017:27017
+  volumes: # 定义卷映射。当我们使用 运行容器时docker run，会自动创建命名卷。但是，使用 Compose 运行时不会发生这种情况。我们需要在顶级volumes:部分定义卷，然后在服务配置中指定挂载点
+   - mongodb:/data/db
+   - mongodb_config:/data/configdb
+  # environment: # 设置环境变量
+  #     MYSQL_ROOT_PASSWORD: secret
+  #     MYSQL_DATABASE: todos
+volumes: # 顶级volumes:部分定义卷定义两个数据卷
+ mongodb:
+ mongodb_config:

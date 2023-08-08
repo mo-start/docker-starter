@@ -1,5 +1,11 @@
 
 https://dockerdocs.cn/language/nodejs/develop/index.html
+
+# Dockerfile
+Dockerfile是一个文本文档，其中包含用户可以在命令行上调用以组装映像的所有命令。当我们告诉Docker通过执行docker build命令来构建映像时，Docker读取这些指令并逐个执行它们，并创建一个Docker映像。
+
+让我们逐步为应用程序创建一个Dockerfile的过程。在工作目录的根目录中，创建一个名为的Dockerfile文件，然后在文本编辑器中打开该文件
+
 # 将图像作为容器运行
 
 ## .dockerignore
@@ -20,7 +26,6 @@ docker run -d -p 8000:8000 --name rest-server node-docker
 ## docker ps命令以查看正在运行的容器的列表
 
 docker ps -a 查看所有容器
-
 
 ## ps rm
 
